@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Developer Code Editor - Mini World</title>
+  <link href="./css/app_v3.css" rel="stylesheet">
+  <!-- 引入 html2canvas 库 -->
+  <script src="./js/html2canvas.min.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="menu-wrapper">
+      <ul class="menu-list clearfix">
+        <!--文件菜单-->
+        <li class="menu-item">
+          <div class="theme-wrapper menu-item-wrapper" id="fileWrapper">
+            <button class="theme-btn menu-item-btn" id="fileBtn">File</button>
+            <div class="theme-inner menu-item-inner" id="fileInner">
+              <ul class="theme-list">
+                <li class="idlib-item"  data-type="1001">Open</li>
+                <li class="idlib-item"  data-type="1002">Save</li>
+                <li class="idlib-item"  data-type="1003">Export</li>
+                <li class="idlib-item"  data-type="1004">Delete</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        <!-- id 库-->
+        <li class="menu-item">
+          <div class="idlib-wrapper menu-item-wrapper" id="idlibWrapper">
+            <button class="idlib-btn menu-item-btn" id="idlibBtn">ID Library</button>
+            <div class="idlib-inner menu-item-inner" id="idlibInner" style="max-height: 600px; overflow-y: auto;">
+              <ul class="idlib-list">
+                <li class="idlib-item" data-type="2001">Block</li>
+                <li class="idlib-item" data-type="2002">Item</li>
+                <li class="idlib-item" data-type="2003">Creature</li>
+                <li class="idlib-item" data-type="2004">Effects</li>
+                <li class="idlib-item" data-type="2005">Sound</li>
+                <li class="idlib-item" data-type="2006">Buff</li>
+                <li class="idlib-item" data-type="2007">Action</li>
+                <li class="idlib-item" data-type="2008">Model</li>
+                <li class="idlib-item" data-type="2009">Image</li>
+                <li class="idlib-item" data-type="2010">Interface</li>
+                <li class="idlib-item" data-type="2011">Component</li>
+                <li class="idlib-item" data-type="2012">Page Status</li>
+                <li class="idlib-item" data-type="2013">Interface animation</li>
+                <li class="idlib-item" data-type="2014">Broadcast</li>
+                <li class="idlib-item" data-type="2015">Components</li>
+                <li class="idlib-item" data-type="2016">Variables</li>
+                <li class="idlib-item" data-type="2017">Attribute Variables</li>
+                <li class="idlib-item" data-type="2018">Custom Function</li>
+                <li class="idlib-item" data-type="2019">Object</li>
+                <li class="idlib-item" data-type="2020">Behavior Tree Variables</li>
+                <!-- <li class="idlib-item" data-type="2021"> Behavior Tree</li> Behavior Tree Variable Transfer and Use -->
+                <li class="idlib-item" data-type="2022">Blueprint</li>
+                <li class="idlib-item" data-type="2023">Entity</li>
+                <li class="idlib-item" data-type="2024">Products</li>
+                <li class="idlib-item" data-type="2025">Product Categories</li>
+                <li class="idlib-item" data-type="2026">Environment</li>
+                <li class="idlib-item" data-type="2027">Filter</li>
+				<li class="idlib-item" data-type="2028">Label</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+       <!--id giá trị-->
+       <li class="menu-item">
+        <div class="insert-wrapper menu-item-wrapper" id="insertWrapper">
+          <button class="insert-btn menu-item-btn" id="insertBtn">Insert</button>
+          <div class="insert-inner menu-item-inner not-focus-hide" id="insertInner">
+            <ul class="font-list">
+              <li class="idlib-item" data-type="3001">Lua Structure</li>
+              <li class="idlib-item" data-type="3002">Component properties</li>
+            </ul>
+          </div>
+        </div>
+      </li>
+
+        <!--Cỡ chữ-->
+        <li class="menu-item">
+          <div class="font-wrapper menu-item-wrapper" id="fontWrapper">
+            <button class="font-btn menu-item-btn" id="fontBtn">Fonts</button>
+            <div class="font-inner menu-item-inner" id="fontInner">
+              <ul class="font-list">
+                <li class="font-item" data-size="16px">16px</li>
+                <li class="font-item" data-size="18px">18px</li>
+                <li class="font-item" data-size="22px">22px</li>
+                <li class="font-item" data-size="24px">24px</li>
+                <li class="font-item" data-size="26px">26px</li>
+                <li class="font-item" data-size="28px">28px</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <!--Select theme-->
+        <li class="menu-item">
+          <div class="theme-wrapper menu-item-wrapper" id="themeWrapper">
+            <button class="theme-btn menu-item-btn" id="themeBtn">Theme</button>
+            <div class="theme-inner menu-item-inner" id="themeInner">
+              <ul class="theme-list">
+                <li class="theme-item" data-theme="textmate">textmate</li>
+                <li class="theme-item" data-theme="monokai">monokai</li>
+                <li class="theme-item" data-theme="eclipse">eclipse</li>
+                <li class="theme-item" data-theme="ambiance">ambiance</li>
+                <li class="theme-item" data-theme="sqlserver">sqlserver</li>
+                <li class="theme-item" data-theme="github">github</li>
+                <li class="theme-item" data-theme="solarized_light">solarized_light</li>
+                <li class="theme-item" data-theme="solarized_dark">solarized_dark</li>
+                <li class="theme-item" data-theme="tomorrow_night_bright">tomorrow_night_bright</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+        
+        <!--Help-->
+        <li class="menu-item">
+          <div class="font-wrapper menu-item-wrapper" id="helpWrapper">
+            <button class="font-btn menu-item-btn" id="helpBtn">Help</button>
+            <div class="font-inner menu-item-inner" id="helpInner">
+              <ul class="help-list">
+                <li class="idlib-item" data-type="4001">Lua Academy</li>
+                <li class="idlib-item" data-type="4002">Bug Feedback</li>
+              </ul>
+            </div>
+          </div>
+        </li>
+
+        <!--调试-->
+        <li class="menu-item">
+          <div class="font-wrapper menu-item-wrapper" id="debugWrapper">
+            <button class="font-btn menu-item-btn" id="debugBtn">Debug</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--编辑器-->
+    <div id="codeEditor" class="code-editor" contenteditable="true" spellcheck="false"></div>
+    <!--wiki拖动时的遮罩-->
+    <div id="devWikiMask" class="dev-wiki-mask"></div>
+    <!--搜索id-->
+    <div id="searchIdWrapper" class="search-id-wrapper">
+      <div id="searchIdTitle" class="search-id-title">
+        <span>ID Search tools</span>
+        <i class="close-icon" id="searchIdCloseIcon"></i>
+      </div>
+      <div class="search-id-inner">
+        <div id="searchIdInpWrapper" class="search-id-inpwrapper">
+          <input type="text" class="search-id-input" placeholder="请输入方块 ID 或 名称" id="searchIdInput">
+          <div class="history-list" id="searchIdHistoryList"></div>
+        </div>
+        <div id="searchIdListContainer" class="search-id-container">
+          <!-- id 列表 -->
+          <dl id="searchIdList">
+          </dl>
+        </div>
+      </div>
+    </div>
+    <!--wiki模块-->
+    <div id="devWiki" class="dev-wiki" hidden = "true">
+      <div id="devWikiBar" class="dev-wiki-bar" hidden = "true" ></div>
+      <iframe src="https://developers.mini1.cn/wiki/API.html" frameborder="0"></iframe>
+      <button type="button" id="toggleWikiBtn" hidden = "true" class="btn toggle-wiki-btn">Wiki</button>
+    </div>
+  </div>
+  <script src="./js/datapack_v3.js"></script>
+  <script src="./js/insertCodeConfig.js"></script>
+<script type="text/javascript" src="./js/app_v3.js"></script></body>
+</html>
